@@ -247,10 +247,18 @@ def fig_ablation(results, cfg):
     return fig
 
 
+def label_panels(fig):
+    """Prefix each titled panel with (a), (b), ... so captions can refer to them."""
+    titled = [ax for ax in fig.axes if ax.get_title()]
+    for i, ax in enumerate(titled):
+        ax.set_title(f"({chr(97 + i)}) {ax.get_title()}", fontsize=ax.title.get_fontsize())
+
+
 def make_figures(results, cfg):
     cfg.figures_dir.mkdir(parents=True, exist_ok=True)
     for name, build in {"baseline": fig_baseline, "diagnostics": fig_diagnostics, "ablation": fig_ablation}.items():
         fig = build(results, cfg)
+        label_panels(fig)
         fig.savefig(cfg.figures_dir / f"{name}.png", dpi=300, bbox_inches="tight")
         plt.close(fig)
 
