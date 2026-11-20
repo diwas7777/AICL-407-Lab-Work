@@ -1,0 +1,20 @@
+[project]
+name = "rl-labs"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "gymnasium>=1.4.0",
+    "matplotlib>=3.11.2",
+    "numpy>=2.4.6",
+    "torch>=2.14.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
+[tool.pytest.ini_options]
+addopts = "--import-mode=importlib -m 'not slow'"
+markers = ["slow: trains a real agent; run explicitly with `uv run pytest -m slow`"]
+testpaths = ["LabAssignment1/tests", "LabAssignment2/tests"]

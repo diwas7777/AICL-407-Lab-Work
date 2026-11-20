@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*/results/
+*/figures/
+*/quick_run/
+tests/
+*.pdf
+.DS_Store
